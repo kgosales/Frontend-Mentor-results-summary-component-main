@@ -27,10 +27,15 @@
     font-family: "Hanken Grotesk";
 }
 
-html,
-body {
+html {
     width: 100%;
     height: 100%;
+}
+
+body {
+    width: 100%;
+    min-height: 100%;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,19 +46,15 @@ p {
 }
 
 main {
-    width: 50%;
-    height: 60%;
+    width: 100%;
     max-width: 650px;
-    max-height: 700px;
     border-radius: 25px;
     box-shadow: 20px 0px 20px 0px var(--PaleBlue);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: nowrap;
 
     .lados {
-        width: 50%;
-        height: 100%;
+        width: 100%;
         padding: 35px;
         display: flex;
         flex-direction: column;
@@ -62,11 +63,9 @@ main {
     }
 
     .result {
-        background-image: linear-gradient(
-            to bottom,
-            var(--LightSlateBlueBackground),
-            var(--LightRoyalBlueBackground)
-        );
+        background-image: linear-gradient(to bottom,
+                var(--LightSlateBlueBackground),
+                var(--LightRoyalBlueBackground));
         border-radius: 25px;
         color: var(--LightLavender);
         text-align: center;
@@ -75,11 +74,9 @@ main {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background-image: linear-gradient(
-                to top,
-                var(--PersianBlueCircle),
-                var(--VioletBlueCircle)
-            );
+            background-image: linear-gradient(to top,
+                    var(--PersianBlueCircle),
+                    var(--VioletBlueCircle));
 
             display: flex;
             flex-direction: column;
@@ -123,7 +120,7 @@ main {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                margin-bottom: 15px;
+                margin-bottom: 20px;
 
                 div {
                     display: flex;
@@ -141,11 +138,12 @@ main {
                 }
 
                 .categoria-pontos {
-                    p{
-                        color: hsla(224, 30%, 27%,50%);
+                    p {
+                        color: hsla(224, 30%, 27%, 50%);
                     }
+
                     span {
-                        color: hsla(224, 30%, 27%,100%);
+                        color: hsla(224, 30%, 27%, 100%);
                         font-weight: 700;
                     }
                 }
@@ -162,6 +160,12 @@ main {
             font-size: 18px;
             color: var(--White);
             margin-top: 20px;
+
+            &:hover {
+                background-image: linear-gradient(to bottom,
+                        var(--LightSlateBlueBackground),
+                        var(--LightRoyalBlueBackground));
+            }
         }
     }
 }
@@ -170,10 +174,43 @@ main {
     width: 100%;
     font-size: 11px;
     text-align: center;
-    position: fixed;
+    position: absolute;
     bottom: 0;
 
     a {
         color: hsl(228, 45%, 44%);
+    }
+}
+
+@media screen and (max-width: 376px) {
+    main {
+        flex-wrap: wrap;
+        border-radius: 0px;
+
+        .result {
+            border-radius: 0 0 30px 30px;
+
+            h2 {
+                font-size: 20px;
+                margin-bottom: 30px;
+            }
+
+            .pontuacao {
+                margin-bottom: 30px;
+            }
+
+            h1 {
+                font-size: 24px;
+                margin-bottom: 15px;
+            }
+
+            p {
+                font-size: 17px;
+            }
+        }
+
+        .summary {
+            padding-top: 25px;
+        }
     }
 }
